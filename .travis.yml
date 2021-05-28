@@ -10,6 +10,7 @@ sudo: false
 # Здесь используется сторонни сервис https://codecov.io/
 
 after_success:
+  -
   - bash <(curl -s https://codecov.io/bash)
 
 # Отправлять уведомление на почту(Изменить на свою) если сборка упала
