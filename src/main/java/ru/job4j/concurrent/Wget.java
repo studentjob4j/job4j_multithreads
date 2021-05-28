@@ -4,8 +4,7 @@ package ru.job4j.concurrent;
  * @author Shegai Evgenii
  * @version 1.0
  * @since 17.05.2021
- * sleeping thread  if countBytes > 1024 byte on some time and then the loop continue
- * countBytes == 0;
+ * скачивание файла с ограничением по скорости
  */
 
 import org.slf4j.Logger;
