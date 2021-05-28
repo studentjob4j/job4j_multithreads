@@ -8,11 +8,9 @@ package ru.job4j.concurrent;
  */
 
 import org.junit.Test;
-
 import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
-
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
