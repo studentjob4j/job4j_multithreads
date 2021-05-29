@@ -36,7 +36,7 @@ public class SimpleBlockingQueue<T> {
                  e.printStackTrace();
              }
          }
-            this.queue.offer(value);
+            queue.offer(value);
             notifyAll();
             System.out.println("Заполняем");
         }
@@ -48,11 +48,15 @@ public class SimpleBlockingQueue<T> {
             while (queue.isEmpty()) {
                 wait();
             }
-            result = this.queue.poll();
+            result = queue.poll();
             System.out.println("Получаем - " + result);
             notifyAll();
         }
         return result;
+    }
+
+    public synchronized boolean isEmpty() {
+        return queue.isEmpty();
     }
 }
 
