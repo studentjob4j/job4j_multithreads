@@ -25,16 +25,16 @@ public class ConcurrentCache {
 
     public boolean update(Base model) {
         Base oldModel = memory.get(model.getId());
-        BiFunction<Integer, Base, Base>  biFunction = (integer, base) -> {
-           if (oldModel.getVersion() != model.getVersion()) {
-               throw new OptimisticException("The version is not equals");
-           }
-           int version = oldModel.getVersion();
-           Base newModel = new Base(oldModel.getId(), ++version);
-           newModel.setName(model.getName());
-           return newModel;
-        };
-        return memory.computeIfPresent(oldModel.getId(), biFunction) != null;
+
+        return memory.computeIfPresent(oldModel.getId(), (integer, base) -> {
+            if (oldModel.getVersion() != model.getVersion()) {
+                throw new OptimisticException("The version is not equals");
+            }
+            int version = oldModel.getVersion() + 1;
+            Base newModel = new Base(oldModel.getId(), version);
+            newModel.setName(model.getName());
+            return newModel;
+        }) != null;
     }
 
     public void delete(Base model) {
