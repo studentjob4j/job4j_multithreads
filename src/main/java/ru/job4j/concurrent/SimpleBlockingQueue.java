@@ -38,7 +38,6 @@ public class SimpleBlockingQueue<T> {
          }
             queue.offer(value);
             notifyAll();
-            System.out.println("Заполняем");
         }
     }
 
@@ -49,7 +48,6 @@ public class SimpleBlockingQueue<T> {
                 wait();
             }
             result = queue.poll();
-            System.out.println("Получаем - " + result);
             notifyAll();
         }
         return result;
