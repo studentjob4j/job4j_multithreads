@@ -29,7 +29,7 @@ public class ParalleMergeSearch<T> extends RecursiveTask<Integer> {
     protected Integer compute() {
         int result = -1;
         if (to - from <= 10) {
-          for (int i = from; i < to; i++) {
+          for (int i = from; i <= to; i++) {
               if (array[i].equals(value) || array[i] == value) {
                    result = i;
                    return result;
@@ -44,6 +44,6 @@ public class ParalleMergeSearch<T> extends RecursiveTask<Integer> {
             rightSearch.fork();
             int left = (int) leftSearch.join();
             int right = (int) rightSearch.join();
-            return left != -1 ? left : right;
+            return Math.max(left, right);
     }
 }
