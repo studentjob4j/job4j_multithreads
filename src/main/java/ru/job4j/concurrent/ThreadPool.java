@@ -26,10 +26,8 @@ public class ThreadPool {
     }
 
     private void init() {
-        int count = 0;
-        while (count < Runtime.getRuntime().availableProcessors()) {
+        for (int i = 0; i < Runtime.getRuntime().availableProcessors(); i++) {
             threads.add(new Job());
-            count++;
         }
     }
 
@@ -38,7 +36,11 @@ public class ThreadPool {
     }
 
     public void work(Runnable job) {
-         tasks.offer(job);
+        try {
+            tasks.offer(job);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void shutdown() {

@@ -21,9 +21,13 @@ public class SimpleBlockingQueueTest {
         SimpleBlockingQueue<Integer> queue = new SimpleBlockingQueue<>(3);
         Thread producer = new Thread(() -> {
             System.out.println("Заполняем очередь");
-            queue.offer(1);
-            queue.offer(2);
-            queue.offer(3);
+            try {
+                queue.offer(1);
+                queue.offer(2);
+                queue.offer(3);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         });
 
         Thread consumer = new Thread(() -> {
@@ -50,7 +54,14 @@ public class SimpleBlockingQueueTest {
         final SimpleBlockingQueue<Integer> queue = new SimpleBlockingQueue<>(5);
         Thread producer = new Thread(
                 () -> {
-                    IntStream.range(0, 5).forEach(queue::offer);
+                        IntStream.range(0, 5).forEach(value -> {
+                            try {
+                                queue.offer(value);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        });
+
                 }
         );
         producer.start();
