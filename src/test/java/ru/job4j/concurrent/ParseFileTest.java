@@ -20,7 +20,7 @@ public class ParseFileTest {
         File file = new File("temp.xml");
         ParseFile parseFile = new ParseFile(file);
         String res = parseFile.getContentWithoutUnicode();
-        assertThat(res.length(), is(2712));
+        assertThat(res.length(), is(2998));
     }
 
     @Test
@@ -28,6 +28,6 @@ public class ParseFileTest {
         File file = new File("temp.xml");
         ParseFile parseFile = new ParseFile(file);
         String res = parseFile.getContent();
-        assertThat(res.length(), is(2712));
+        assertThat(res.length(), is(2998));
     }
 }
