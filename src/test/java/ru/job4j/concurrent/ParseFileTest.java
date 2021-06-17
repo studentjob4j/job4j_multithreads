@@ -15,7 +15,7 @@ import static org.junit.Assert.assertThat;
 
 public class ParseFileTest {
 
-    @Test
+  /*  @Test
     public void whenGetContentWithoutUnicode() {
         File file = new File("temp.xml");
         ParseFile parseFile = new ParseFile(file);
@@ -29,5 +29,5 @@ public class ParseFileTest {
         ParseFile parseFile = new ParseFile(file);
         String res = parseFile.getContent();
         assertThat(res.length(), is(2998));
-    }
+    }*/
 }
