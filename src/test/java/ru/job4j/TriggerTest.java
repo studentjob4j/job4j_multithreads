@@ -12,4 +12,10 @@ public class TriggerTest {
         int res = trigger.sum(5, 5);
         assertThat(res, is(10));
     }
+
+    @Test
+    public void test() {
+        Trigger trigger = new Trigger();
+        assertThat(trigger.result(), is(0));
+    }
 }
